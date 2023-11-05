@@ -4,7 +4,7 @@ import {View, Text} from 'react-native';
 export default function Calendar() {
   return (
     <View>
-      <Text>Calendar Page</Text>
+      <Text>Tasks Page</Text>
     </View>
   );
 }

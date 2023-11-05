@@ -17,7 +17,7 @@ const BottomTabBar = ({ navigation, state }) => (
     selectedIndex={state.index}
     onSelect={index => navigation.navigate(state.routeNames[index])}>
     <BottomNavigationTab
-      title="calendar"
+      title="Calendar"
       icon={props => <Icon {...props} name="calendar-outline" />}
     />
       <BottomNavigationTab
@@ -39,7 +39,7 @@ const TabNavigator = () => (
   <Navigator
     tabBar={props => <BottomTabBar {...props} />}
     screenOptions={{ headerShown: false }}>
-    <Screen name="calendar" component={Calendar} />
+    <Screen name="Calendar" component={Calendar} />
     <Screen name="Add Event" component={AddEvent} />
     <Screen name="Schedule" component={Schedule} />
     <Screen name="Tasks" component={Tasks} />
