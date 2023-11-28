@@ -2,10 +2,8 @@ import React from 'react';
 import { View } from 'react-native';
 import { Calendar, Card, Text } from '@ui-kitten/components';
 
+// Calendar page
 function CalendarPage() {
-  // use state for selected date for info
-  //const [date, setDate] = React.useState(null);
-
   return (
     <View>
       <Calendar1 />
@@ -14,7 +12,7 @@ function CalendarPage() {
 }
 export default CalendarPage;
 
-// calendar
+// Calendar component
 export const Calendar1 = () => {
 
   const [date, setDate] = React.useState(new Date());
@@ -39,10 +37,10 @@ export const Calendar1 = () => {
   );
 };
 
-// Card
+// Card component
 export const Card1 = ({ selectedDate }) => {
   
-  // use state for info
+  // object array
   const [info, setInfo] = React.useState([
     { date: '11/1/2023', text: 'text1' },
     { date: '11/2/2023', text: 'text2' },
