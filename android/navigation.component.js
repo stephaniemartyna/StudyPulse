@@ -1,10 +1,10 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import AddEvent from './add-event';
-import Calendar from './calender';
-import Schedule from './schedule';
-import Tasks from './tasks';
+import AddEvent from './src/add-event';
+import Calendar from './src/calender';
+import Schedule from './src/schedule';
+import Tasks from './src/tasks';
 import { BottomNavigation, BottomNavigationTab, Icon } from '@ui-kitten/components';
 
 
