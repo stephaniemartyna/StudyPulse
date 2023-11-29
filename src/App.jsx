@@ -7,8 +7,8 @@ import {
   Text,
 } from '@ui-kitten/components';
 import {EvaIconsPack} from '@ui-kitten/eva-icons';
-import {AppNavigator} from './navigation.component';
-import {default as theme} from './custom-theme.json';
+import {AppNavigator} from './components/navigation.component';
+import {default as theme} from '../android/custom-theme.json';
 
 export default () => (
   <>

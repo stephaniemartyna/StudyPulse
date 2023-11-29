@@ -1,0 +1,82 @@
+[
+  {
+    "subject": "Mobile App Dev",
+    "instructor": "Nick",
+    "room": "MB323",
+    "day": "Tuesday",
+    "startHour": 10,
+    "endHour": 12
+  },
+  {
+    "subject": "Software Projects",
+    "instructor": "Alex",
+    "room": "MD201",
+    "day": "Tuesday",
+    "startHour": 13,
+    "endHour": 15
+  },
+  {
+    "subject": "Web Dev",
+    "instructor": "Aaron",
+    "room": "Online",
+    "day": "Tuesday",
+    "startHour": 15,
+    "endHour": 17
+  },
+  {
+    "subject": "Database",
+    "instructor": "Nicole",
+    "room": "Online",
+    "day": "Wednesday",
+    "startHour": 11,
+    "endHour": 13
+  },
+  {
+    "subject": "OOP",
+    "instructor": "Hani",
+    "room": "Online",
+    "day": "Wednesday",
+    "startHour": 15,
+    "endHour": 17
+  },
+  {
+    "subject": "Mobile App Dev",
+    "instructor": "Nick",
+    "room": "NK01",
+    "day": "Thursday",
+    "startHour": 10,
+    "endHour": 12
+  },
+  {
+    "subject": "Software Projects",
+    "instructor": "Alex",
+    "room": "MD201",
+    "day": "Thursday",
+    "startHour": 13,
+    "endHour": 15
+  },
+  {
+    "subject": "Web Dev",
+    "instructor": "Aaron",
+    "room": "MB319",
+    "day": "Thursday",
+    "startHour": 14,
+    "endHour": 17
+  },
+  {
+    "subject": "Database",
+    "instructor": "Nicole",
+    "room": "E210E",
+    "day": "Friday",
+    "startHour": 10,
+    "endHour": 13
+  },
+  {
+    "subject": "OOP",
+    "instructor": "Hani",
+    "room": "E210F",
+    "day": "Friday",
+    "startHour": 14,
+    "endHour": 17
+  }
+]
