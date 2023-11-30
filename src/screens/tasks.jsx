@@ -18,20 +18,19 @@ export default function Tasks() {
   }, []);
 
   return (
-    <View>
-      <Text>Subjects for the Current Day ({currentDayOfWeek})</Text>
-      <View>
+    <View style={styles.container}>
+      <Text style={styles.text}>Current Schedule for the Today</Text>
+      <View style={styles.subjectsContainer}>
         {/* Display subjects for the current day */}
         {Array.isArray(currentDaySubjects) && currentDaySubjects.length > 0 ? (
           currentDaySubjects.map((subject, index) => (
-            <View key={index}>
-              <Text>Subject: {subject.subject}</Text>
-              <Text>Instructor: {subject.instructor}</Text>
-              <Text>Room: {subject.room}</Text>
-              <Text>Day: {subject.day}</Text>
-              <Text>Start Hour: {subject.startHour}</Text>
-              <Text>End Hour: {subject.endHour}</Text>
-              <Text>{'----'}</Text>
+            <View key={index} style={styles.subjectContainer}>
+              <Text style={styles.subjectText}>Subject: {subject.subject}</Text>
+              <Text style={styles.subjectText2}>Instructor: {subject.instructor}</Text>
+              <Text style={styles.subjectText2}>Room: {subject.room}</Text>
+              <Text style={styles.subjectText2}>Day: {subject.day}</Text>
+              <Text style={styles.subjectText2}>Start Hour: {subject.startHour}</Text>
+              <Text style={styles.subjectText2}>End Hour: {subject.endHour}</Text>
             </View>
           ))
         ) : (
@@ -41,3 +40,33 @@ export default function Tasks() {
     </View>
   );
 }
+
+const styles = {
+  container: {
+    flex: 1,
+    padding: 20,
+  },
+  text: {
+    fontSize: 20,
+    marginBottom: 10,
+  },
+  subjectsContainer: {
+    marginTop: 15,
+  },
+  subjectContainer: {
+    backgroundColor: '#2EA7FF',
+    borderRadius: 10,
+    padding: 10,
+    marginBottom: 15,
+  },
+  subjectText: {
+    color: 'white',
+    fontSize: 20,
+    marginBottom: 5,
+  },
+  subjectText2: {
+    color: 'white',
+    fontSize: 16,
+    marginBottom: 5,
+  },
+};
