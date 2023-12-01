@@ -6,10 +6,15 @@ import moment from 'moment';
 export default function Tasks() {
   const [currentDaySubjects, setCurrentDaySubjects] = useState([]);
   const [currentDayOfWeek, setCurrentDayOfWeek] = useState('');
+  const [event, setEvent] = React.useState();
+  const [day, setDay] = React.useState();
 
   useEffect(() => {
     const formattedDayOfWeek = moment().format('dddd');
     setCurrentDayOfWeek(formattedDayOfWeek);
+
+    const formattedDayNum = moment().format("Do");
+    setDay(formattedDayNum);
 
     const filteredSubjects = examples.filter(
       subject => subject.day === formattedDayOfWeek
@@ -19,7 +24,7 @@ export default function Tasks() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Current Schedule for the Today</Text>
+      <Text style={styles.title}>{day}{currentDayOfWeek}</Text>
       <View style={styles.subjectsContainer}>
         {/* Display subjects for the current day */}
         {Array.isArray(currentDaySubjects) && currentDaySubjects.length > 0 ? (
@@ -37,6 +42,10 @@ export default function Tasks() {
           <Text>No subjects found for the current day</Text>
         )}
       </View>
+      <Text style={styles.text}>Events</Text>
+      <View>
+        
+      </View>
     </View>
   );
 }
@@ -49,6 +58,11 @@ const styles = {
   text: {
     fontSize: 20,
     marginBottom: 10,
+  },
+  title: {
+    fontSize: 48,
+    fontFamily: 'Manrope',
+    color: '#000000',
   },
   subjectsContainer: {
     marginTop: 15,
