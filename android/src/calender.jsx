@@ -1,11 +1,22 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, ScrollView, StyleSheet } from 'react-native';
 import { Calendar, Card, Text } from '@ui-kitten/components';
+
+
+// Stylesheet for centering the Calendar
+const styles = StyleSheet.create({
+  centerContent: {
+    flex: 1,
+    //justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+  },
+});
 
 // Calendar page
 function CalendarPage() {
   return (
-    <View>
+    <View style={styles.centerContent}>
       <Calendar1 />
     </View>
   );
@@ -19,19 +30,15 @@ export const Calendar1 = () => {
 
   return (
     <>
-      <Text category='h6'>
-        Selected date:
-        {' '}
-        {date.toLocaleDateString()}
-      </Text>
-
       <Calendar
         date={date}
         onSelect={nextDate => setDate(nextDate)}
+        style={{ width: '100%' }} // Set width to '100%'
       />
 
       <Card1 
         selectedDate={date.toLocaleDateString()}
+        style={{ width: '100%' }} // Set width to '100%'
       />
     </>
   );
@@ -64,5 +71,8 @@ export const Card1 = ({ selectedDate }) => {
     </Card>
   );
 };
+
+
+
 
 //const testText = 'The Maldives, officially the Republic of Maldives, is a small country in South Asia, located in the Arabian Sea of the Indian Ocean. It lies southwest of Sri Lanka and India, about 1,000 kilometres (620 mi) from the Asian continent';
