@@ -2,21 +2,10 @@ import React from 'react';
 import { View, ScrollView, StyleSheet } from 'react-native';
 import { Calendar, Card, Text } from '@ui-kitten/components';
 
-
-// Stylesheet for centering the Calendar
-const styles = StyleSheet.create({
-  centerContent: {
-    flex: 1,
-    //justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-  },
-});
-
 // Calendar page
 function CalendarPage() {
   return (
-    <ScrollView contentContainerStyle={styles.centerContent}>
+    <ScrollView>
       <Calendar1 />
     </ScrollView>
   );
@@ -30,15 +19,13 @@ export const Calendar1 = () => {
 
   return (
     <>
-      <Calendar
+      <Calendar style={{ width: '100%' }}
         date={date}
         onSelect={nextDate => setDate(nextDate)}
-        style={{ width: '100%' }} // Set width to '100%'
       />
 
-      <Card1 
+      <Card1 style={{ width: '100%' }}
         selectedDate={date.toLocaleDateString()}
-        style={{ width: '100%' }} // Set width to '100%'
       />
     </>
   );
@@ -63,8 +50,9 @@ export const Card1 = ({ selectedDate }) => {
   // get info from selected date
   const selectedText = info.find(item => item.date === selectedDate)?.text;
 
+
   return (
-    <Card style={{ width: '100%' }}>
+    <Card >
       <Text>
         Selected date: {selectedDate}, Text: {selectedText || 'None'}
       </Text>
@@ -72,6 +60,18 @@ export const Card1 = ({ selectedDate }) => {
   );
 };
 
+// Stylesheet for centering the Calendar
+const styles = StyleSheet.create({
+  centerContent: {
+    flex: 1,
+    //justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+  },
+  content: {
+    width: '100%',
+  },
+});
 
 
 
