@@ -16,9 +16,9 @@ const styles = StyleSheet.create({
 // Calendar page
 function CalendarPage() {
   return (
-    <View style={styles.centerContent}>
+    <ScrollView contentContainerStyle={styles.centerContent}>
       <Calendar1 />
-    </View>
+    </ScrollView>
   );
 }
 export default CalendarPage;
@@ -52,7 +52,7 @@ export const Card1 = ({ selectedDate }) => {
     { date: '11/1/2023', text: 'text1' },
     { date: '11/2/2023', text: 'text2' },
     { date: '11/3/2023', text: 'text3' },
-    { date: '11/11/2023', text: 'text11' },
+    { date: '11/11/2023', text: 'The Maldives, officially the Republic of Maldives, is a small country in South Asia, located in the Arabian Sea of the Indian Ocean. It lies southwest of Sri Lanka and India, about 1,000 kilometres (620 mi) from the Asian continent' },
   ]);
 
   // add info to selected date
@@ -64,7 +64,7 @@ export const Card1 = ({ selectedDate }) => {
   const selectedText = info.find(item => item.date === selectedDate)?.text;
 
   return (
-    <Card>
+    <Card style={{ width: '100%' }}>
       <Text>
         Selected date: {selectedDate}, Text: {selectedText || 'None'}
       </Text>
