@@ -1,8 +1,7 @@
 import React from 'react';
 import { View, ScrollView, StyleSheet } from 'react-native';
 import { Calendar, Card, Text } from '@ui-kitten/components';
-import examples from '../data/course_examples.json'; // data for calendar description
-
+import events from '../data/event_examples.json';
 
 // Calendar page
 function CalendarPage() {
@@ -34,38 +33,43 @@ export const Calendar1 = () => {
 };
 
 // Card component
-export const Card1 = ({ selectedDate, examples }) => {
+export const Card1 = ({ selectedDate }) => {
   
-  // object array
-  const [info, setInfo] = React.useState([
-    { date: '11/1/2023', text: 'text1' },
-    { date: '11/2/2023', text: 'text2' },
-    { date: '11/3/2023', text: 'text3' },
-    { date: '11/11/2023', text: 'The Maldives, officially the Republic of Maldives, is a small country in South Asia, located in the Arabian Sea of the Indian Ocean. It lies southwest of Sri Lanka and India, about 1,000 kilometres (620 mi) from the Asian continent' },
-  ]);
+  // List of descriptions for each date
+  const [info, setInfo] = React.useState(events);
 
-  // add info to selected date
-  const addInfo = (date, text) => {
-    setInfo([...info, { date, text }]);
+  // Add info to selected date (currently not in use/might not be needed)
+  const addInfo = (name, date, text) => {
+    setInfo([...info, { name, date, text }]);
   };
 
-  // get info from selected date
+  // Get info from selected date
+  const selectedEvent = info.find(item => item.date === selectedDate)?.name;
   const selectedText = info.find(item => item.date === selectedDate)?.text;
-
-    // get day of the week
-    const dayOfWeek = new Date(selectedDate).getDay();
-
+  
+  /* (Probably not needed)
+  // Get day of the week
+  const [month, day, year] = selectedDate.split('/');
+  const dateObject = new Date(year, month - 1, day);
+  
+  // Convert numeric day to actual day
+  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const dayOfWeek = dateObject.getDay(); // Get day of the week
+  const dayName = days[dayOfWeek]; // Convert numeric day to associated day name
+  */
 
   return (
     <Card >
       <Text>
-        Selected date: {selectedDate}, Day of the week: {dayOfWeek},Text: {selectedText || 'None'}
+        {selectedEvent || 'No events planned for this day.'}
+        {'\n\n'}
+        {selectedText || 'Nothing planned for this day.'}
       </Text>
     </Card>
   );
 };
 
-// Stylesheet for centering the Calendar
+// Stylesheet for centering the Calendar (currently not in use)
 const styles = StyleSheet.create({
   centerContent: {
     flex: 1,
@@ -77,7 +81,3 @@ const styles = StyleSheet.create({
     width: '100%',
   },
 });
-
-
-
-//const testText = 'The Maldives, officially the Republic of Maldives, is a small country in South Asia, located in the Arabian Sea of the Indian Ocean. It lies southwest of Sri Lanka and India, about 1,000 kilometres (620 mi) from the Asian continent';
