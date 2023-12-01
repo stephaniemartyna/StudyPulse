@@ -24,7 +24,6 @@ export const Calendar1 = () => {
         date={date}
         onSelect={nextDate => setDate(nextDate)}
       />
-
       <Card1 style={{ width: '100%' }}
         selectedDate={date.toLocaleDateString()}
       />
