@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, StyleSheet, Pressable } from 'react-native';
 import DatePicker from 'react-native-date-picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import events from '../data/events_array'; // Import the events array
+//import events from '../data/events_array'; // Import the events array
 
 
 export default function AddEvent({ navigation }) {
