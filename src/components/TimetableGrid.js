@@ -22,11 +22,9 @@ const TimetableGrid = ({subjects}) => {
         <View style={styles.subjectColumn}>
           {/* Loop hours to create cells */}
           {hours.map(hour => {
-            // Find if there's a subject in the range for each hour
             const matchingSubject = subjects.find(
               subject => subject.startHour <= hour && subject.endHour > hour,
             );
-
             // Return with subject if matchingSubject found for that hour
             // Else return ''
             // Only apply style if matchingSubject

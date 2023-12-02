@@ -4,14 +4,18 @@ import TimetableGrid from '../components/TimetableGrid';
 import examples from '../data/course_examples.json';
 
 /*
+ * Timetable page
+ * Displays a timetable of school subjects for the week
+ *
+ * Author: Matt Yackel
+ *
  * Wishlist:
- *  Form page to CRUD subjects
+ *  Form page to CRUD subjects (was completed but removed to reduce complexity and page count)
  *  Have different colors for different subjects
  *  left+right swipe to change currentDay
  *  Use 12-hour time with am/pm and minutes instead of 24-hour time
  *  If a subject has multiple hours in a row, combine them into 1 block
  */
-
 const Timetable = () => {
   // List of subjects. Starts with examples from .json
   const [subjectsList, setSubjectsList] = useState(examples);
@@ -34,7 +38,7 @@ const Timetable = () => {
     setCurrentDay(prevDay => (prevDay === 1 ? 7 : prevDay - 1));
   };
 
-  // Get subjects for currentDay
+  // Get subjects for the currentDay
   const getSubjectsForCurrentDay = () => {
     return subjectsList.filter(
       subject => subject.day === daysofWeek[currentDay],
