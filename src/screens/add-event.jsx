@@ -2,27 +2,21 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, StyleSheet, Pressable } from 'react-native';
 import DatePicker from 'react-native-date-picker';
 
-// DO WE NEED THESE?
-//import { useNavigation } from '@react-navigation/native';
-//import AsyncStorage from '@react-native-async-storage/async-storage';
-//import events from '../data/events_array'; // Import the events array
-
-
+// Component for adding an event with title, description, and date/time
 export default function AddEvent({ navigation }) {
+  // States to manage input fields and date
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [date, setDate] = useState(new Date());
   const [open, setOpen] = useState(false);
 
-  // DO WE NEED THIS?
-  //const [eventsArr, setEventsArr] = useState(events);
-  
+  // Function to handle input changes in title and description
   const onInputChange = (newTitle, newDescription) => {
     console.log('Title:', newTitle);
     console.log('Description:', newDescription);
   };
 
-
+  // Function to save the event and navigate to the Calendar page
   const saveEvent = async () => {
     onInputChange(title, description);
 
@@ -32,21 +26,13 @@ export default function AddEvent({ navigation }) {
       text: description,
     };
 
-    // Navigate to Calendar page and pass newEvent
+    // Navigate to Calendar page and pass newEvent as a parameter
     navigation.navigate('Calendar', { newEvent });
-
-    // DO WE NEED THIS?
-    // try {
-    //   const updatedEvents = [...eventsArr, newEvent];
-    //   setEventsArr(updatedEvents); // Update eventsArr state with the new event
-    //   navigation.navigate('Calendar', { title, date, description });
-    // } catch (err) {
-    //   console.error('Error saving event:', err);
-    // }
   };
 
   return (
     <View style={styles.view}>
+      {/* Text input for the event name */}
       <Text style={styles.inputText}>Name of Event:</Text>
       <TextInput
         style={styles.input}
@@ -54,6 +40,7 @@ export default function AddEvent({ navigation }) {
         onChangeText={(text) => setTitle(text)}
       />
 
+      {/* Text input for the event description */}
       <Text style={styles.inputText}>Event Description:</Text>
       <TextInput
         style={styles.input}
@@ -61,10 +48,12 @@ export default function AddEvent({ navigation }) {
         onChangeText={(text) => setDescription(text)}
       />
 
+      {/* Button to choose date and time */}
       <Pressable style={styles.button} onPress={() => setOpen(true)}>
         <Text style={styles.buttonText}>Choose Date and Time</Text>
       </Pressable>
 
+      {/* Date picker */}
       <DatePicker
         modal
         open={open}
@@ -78,6 +67,7 @@ export default function AddEvent({ navigation }) {
         }}
       />
 
+      {/* Button to save the event */}
       <Pressable style={styles.button} onPress={saveEvent}>
         <Text style={styles.buttonText}>Save</Text>
       </Pressable>
@@ -85,6 +75,7 @@ export default function AddEvent({ navigation }) {
   );
 }
 
+// Styles for the component
 const styles = StyleSheet.create({
   view: {
     flex: 1,

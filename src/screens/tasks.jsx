@@ -3,19 +3,24 @@ import { View, Text } from 'react-native';
 import examples from '../data/course_examples.json';
 import moment from 'moment';
 
+// Component to display tasks for the current day
 export default function Tasks() {
+  // States to manage current day's tasks and information
   const [currentDaySubjects, setCurrentDaySubjects] = useState([]);
   const [currentDayOfWeek, setCurrentDayOfWeek] = useState('');
   const [event, setEvent] = React.useState();
   const [day, setDay] = React.useState();
 
+  // Fetches and sets tasks for the current day on component mount
   useEffect(() => {
+    // Get the formatted day of the week and date using moment.js
     const formattedDayOfWeek = moment().format('dddd');
     setCurrentDayOfWeek(formattedDayOfWeek);
 
-    const formattedDayNum = moment().format("Do");
+    const formattedDayNum = moment().format("MMMM Do YYYY");
     setDay(formattedDayNum);
 
+    // Filters tasks from examples data based on the current day
     const filteredSubjects = examples.filter(
       subject => subject.day === formattedDayOfWeek
     );
@@ -24,7 +29,9 @@ export default function Tasks() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{day}{currentDayOfWeek}</Text>
+      {/* Title displaying the current date */}
+      <Text style={styles.title}>{day}</Text>   
+      {/* Container to display tasks for the current day */}
       <View style={styles.subjectsContainer}>
         {/* Display subjects for the current day */}
         {Array.isArray(currentDaySubjects) && currentDaySubjects.length > 0 ? (
@@ -39,30 +46,27 @@ export default function Tasks() {
             </View>
           ))
         ) : (
+          // Message displayed if no tasks are found for the current day
           <Text>No subjects found for the current day</Text>
         )}
-      </View>
-      <Text style={styles.text}>Yippie</Text>
-      <View>
-        
       </View>
     </View>
   );
 }
 
+// Styles for the component
 const styles = {
   container: {
     flex: 1,
     padding: 20,
   },
-  text: {
-    fontSize: 20,
-    marginBottom: 10,
-  },
   title: {
-    fontSize: 48,
+    fontSize: 40,
     fontFamily: 'Manrope',
-    color: '#000000',
+    color: 'gray',
+    alignItems: 'center',
+    textDecorationLine: 'underline', // Underline text
+    marginBottom: 15,
   },
   subjectsContainer: {
     marginTop: 15,
