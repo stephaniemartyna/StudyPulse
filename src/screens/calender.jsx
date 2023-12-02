@@ -2,9 +2,12 @@ import React from 'react';
 import { View, ScrollView, StyleSheet } from 'react-native';
 import { Calendar, Card, Text } from '@ui-kitten/components';
 import eventExamples from '../data/event_examples.json'; // Import the events array
+import { useRoute } from '@react-navigation/native';
 
 // Calendar page
 function CalendarPage() {
+  const route = useRoute();
+  const { newEvent } = route.params || {};
   return (
     <ScrollView>
       <Calendar1 />
@@ -39,7 +42,6 @@ export const Card1 = ({ selectedDate }) => {
 
   const selectedEvent = events.find(item => item.date === selectedDate)?.name;
   const selectedText = events.find(item => item.date === selectedDate)?.text;
-
 
   return (
     <Card>

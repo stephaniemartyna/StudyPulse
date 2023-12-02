@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, StyleSheet, Pressable } from 'react-native';
 import DatePicker from 'react-native-date-picker';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+//import { useNavigation } from '@react-navigation/native';
+//import AsyncStorage from '@react-native-async-storage/async-storage';
 //import events from '../data/events_array'; // Import the events array
 
 
@@ -10,7 +11,7 @@ export default function AddEvent({ navigation }) {
   const [description, setDescription] = useState('');
   const [date, setDate] = useState(new Date());
   const [open, setOpen] = useState(false);
-  const [eventsArr, setEventsArr] = useState(events);
+  //const [eventsArr, setEventsArr] = useState(events);
   
   const onInputChange = (newTitle, newDescription) => {
     console.log('Title:', newTitle);
@@ -26,13 +27,15 @@ export default function AddEvent({ navigation }) {
       text: description,
     };
 
-    try {
-      const updatedEvents = [...eventsArr, newEvent];
-      setEventsArr(updatedEvents); // Update eventsArr state with the new event
-      navigation.navigate('Calendar', { title, date, description });
-    } catch (err) {
-      console.error('Error saving event:', err);
-    }
+    navigation.navigate('Calendar', { newEvent });
+
+    // try {
+    //   const updatedEvents = [...eventsArr, newEvent];
+    //   setEventsArr(updatedEvents); // Update eventsArr state with the new event
+    //   navigation.navigate('Calendar', { title, date, description });
+    // } catch (err) {
+    //   console.error('Error saving event:', err);
+    // }
   };
 
   return (
