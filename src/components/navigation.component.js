@@ -2,7 +2,7 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import AddEvent from '../screens/add-event';
-import Calendar from '../screens/calender';
+import Calendar from '../screens/calendar';
 import Timetable from '../screens/timetable';
 import Tasks from '../screens/tasks';
 import {

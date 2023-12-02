@@ -1,20 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, StyleSheet, Pressable } from 'react-native';
 import DatePicker from 'react-native-date-picker';
-import Event from '../data/event_examples.json';
-import RNFS from 'react-native-fs';
 
+// Component for adding an event with title, description, and date/time
 export default function AddEvent({ navigation }) {
+  // States to manage input fields and date
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [date, setDate] = useState(new Date());
   const [open, setOpen] = useState(false);
 
+  // Function to handle input changes in title and description
   const onInputChange = (newTitle, newDescription) => {
     console.log('Title:', newTitle);
     console.log('Description:', newDescription);
   };
 
+  // Function to save the event and navigate to the Calendar page
   const saveEvent = async () => {
     onInputChange(title, description);
 
@@ -24,34 +26,13 @@ export default function AddEvent({ navigation }) {
       text: description,
     };
 
-    const updatedEvents = [...Event, newEvent];
-
-    const path = RNFS.DocumentDirectoryPath + '../data/event_examples.json';
-
-    try {
-      // Read the file
-      const data = await RNFS.readFile(path);
-
-      // Parse the file content to a JavaScript object
-      const events = JSON.parse(data);
-
-      // Add the new object
-      events.push({ title, date, description });
-
-      // Convert the updated object to a JSON string
-      const json = JSON.stringify(events);
-
-      // Write the updated JSON string to the file
-      await RNFS.writeFile(path, json, 'utf8');
-
-      navigation.navigate('Calendar', { title, date, description });
-    } catch (err) {
-      console.error(err);
-    }
+    // Navigate to Calendar page and pass newEvent as a parameter
+    navigation.navigate('Calendar', { newEvent });
   };
 
   return (
     <View style={styles.view}>
+      {/* Text input for the event name */}
       <Text style={styles.inputText}>Name of Event:</Text>
       <TextInput
         style={styles.input}
@@ -59,6 +40,7 @@ export default function AddEvent({ navigation }) {
         onChangeText={(text) => setTitle(text)}
       />
 
+      {/* Text input for the event description */}
       <Text style={styles.inputText}>Event Description:</Text>
       <TextInput
         style={styles.input}
@@ -66,10 +48,12 @@ export default function AddEvent({ navigation }) {
         onChangeText={(text) => setDescription(text)}
       />
 
+      {/* Button to choose date and time */}
       <Pressable style={styles.button} onPress={() => setOpen(true)}>
         <Text style={styles.buttonText}>Choose Date and Time</Text>
       </Pressable>
 
+      {/* Date picker */}
       <DatePicker
         modal
         open={open}
@@ -83,6 +67,7 @@ export default function AddEvent({ navigation }) {
         }}
       />
 
+      {/* Button to save the event */}
       <Pressable style={styles.button} onPress={saveEvent}>
         <Text style={styles.buttonText}>Save</Text>
       </Pressable>
@@ -90,6 +75,7 @@ export default function AddEvent({ navigation }) {
   );
 }
 
+// Styles for the component
 const styles = StyleSheet.create({
   view: {
     flex: 1,

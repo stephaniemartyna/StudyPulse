@@ -1,22 +1,22 @@
 [
   { 
-    "name": "event 1",
+    "name": "Mobile Phase 3",
     "date": "12/1/2023", 
-    "text": "text 1" 
+    "text": "Group project. Create a studying app." 
   },
   { 
-    "name": "event 2",
-    "date": "12/2/2023", 
-    "text": "text 2" 
+    "name": "Analysis and Design Phase 3",
+    "date": "12/8/2023", 
+    "text": "Create a prototype of the web application." 
   },
   {
-    "name": "event 3",
-    "date": "12/3/2023", 
-    "text": "text 3" 
+    "name": "Object Oriented Programming 3 - Assignment 3.",
+    "date": "12/11/2023", 
+    "text": "Create an application with binary trees." 
   },
   { 
-    "name": "event 4",
-    "date": "12/11/2023", 
-    "text": "The Maldives, officially the Republic of Maldives, is a small country in South Asia, located in the Arabian Sea of the Indian Ocean. It lies southwest of Sri Lanka and India, about 1,000 kilometres (620 mi) from the Asian continent"
+    "name": "NEW YEAR'S EVE",
+    "date": "12/31/2023", 
+    "text": "PARTY TIME!"
   }
 ]
