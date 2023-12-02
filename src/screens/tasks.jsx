@@ -8,29 +8,29 @@ export default function Tasks() {
   // States to manage current day's tasks and information
   const [currentDaySubjects, setCurrentDaySubjects] = useState([]);
   const [currentDayOfWeek, setCurrentDayOfWeek] = useState('');
-  const [event, setEvent] = React.useState();
   const [day, setDay] = React.useState();
 
   // Fetches and sets tasks for the current day on component mount
   useEffect(() => {
-    // Get the formatted day of the week and date using moment.js
+    // Get the formatted day of the week and currentTime using moment.js
     const formattedDayOfWeek = moment().format('dddd');
     setCurrentDayOfWeek(formattedDayOfWeek);
 
-    const formattedDayNum = moment().format("MMMM Do YYYY");
+    const formattedDayNum = moment().format("LT");
     setDay(formattedDayNum);
 
     // Filters tasks from examples data based on the current day
     const filteredSubjects = examples.filter(
-      subject => subject.day === formattedDayOfWeek
+      subject => subject.day === currentDayOfWeek
     );
     setCurrentDaySubjects(filteredSubjects);
   }, []);
 
   return (
     <View style={styles.container}>
+      <Text style={styles.title}>Tasks for Today</Text>   
       {/* Title displaying the current date */}
-      <Text style={styles.title}>{day}</Text>   
+      <Text style={styles.title2}>{day}</Text>   
       {/* Container to display tasks for the current day */}
       <View style={styles.subjectsContainer}>
         {/* Display subjects for the current day */}
@@ -61,11 +61,16 @@ const styles = {
     padding: 20,
   },
   title: {
-    fontSize: 40,
+    fontSize: 45,
     fontFamily: 'Manrope',
     color: 'gray',
     alignItems: 'center',
-    textDecorationLine: 'underline', // Underline text
+  },
+  title2: {
+    fontSize: 35,
+    fontFamily: 'Manrope',
+    color: 'gray',
+    alignItems: 'center',
     marginBottom: 15,
   },
   subjectsContainer: {
