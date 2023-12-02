@@ -55,9 +55,8 @@ export const Card1 = ({ selectedDate, events }) => {
   return (
     <Card>
       <Text>
-        {selectedEvent || 'No events planned for this day.'}
-        {'\n\n'}
-        {selectedText || 'Nothing planned for this day.'}
+        {selectedEvent || 'No events planned for this day.\n\n'}
+        {selectedText || ' '}
       </Text>
     </Card>
   );
