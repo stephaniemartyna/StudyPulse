@@ -21,7 +21,7 @@ export default function Tasks() {
 
     // Filters tasks from examples data based on the current day
     const filteredSubjects = examples.filter(
-      subject => subject.day === currentDayOfWeek
+      subject => subject.day === formattedDayOfWeek 
     );
     setCurrentDaySubjects(filteredSubjects);
   }, []);
