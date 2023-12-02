@@ -1,15 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, StyleSheet, Pressable } from 'react-native';
 import DatePicker from 'react-native-date-picker';
-import Event from '../data/event_examples.json';
-import RNFS from 'react-native-fs';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import events from '../data/events_array'; // Import the events array
+
 
 export default function AddEvent({ navigation }) {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [date, setDate] = useState(new Date());
   const [open, setOpen] = useState(false);
-
+  const [eventsArr, setEventsArr] = useState(events);
+  
   const onInputChange = (newTitle, newDescription) => {
     console.log('Title:', newTitle);
     console.log('Description:', newDescription);
@@ -24,29 +26,12 @@ export default function AddEvent({ navigation }) {
       text: description,
     };
 
-    const updatedEvents = [...Event, newEvent];
-
-    const path = RNFS.DocumentDirectoryPath + '../data/event_examples.json';
-
     try {
-      // Read the file
-      const data = await RNFS.readFile(path);
-
-      // Parse the file content to a JavaScript object
-      const events = JSON.parse(data);
-
-      // Add the new object
-      events.push({ title, date, description });
-
-      // Convert the updated object to a JSON string
-      const json = JSON.stringify(events);
-
-      // Write the updated JSON string to the file
-      await RNFS.writeFile(path, json, 'utf8');
-
+      const updatedEvents = [...eventsArr, newEvent];
+      setEventsArr(updatedEvents); // Update eventsArr state with the new event
       navigation.navigate('Calendar', { title, date, description });
     } catch (err) {
-      console.error(err);
+      console.error('Error saving event:', err);
     }
   };
 

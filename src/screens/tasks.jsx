@@ -42,7 +42,7 @@ export default function Tasks() {
           <Text>No subjects found for the current day</Text>
         )}
       </View>
-      <Text style={styles.text}>Events</Text>
+      <Text style={styles.text}>Yippie</Text>
       <View>
         
       </View>

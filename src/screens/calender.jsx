@@ -1,13 +1,13 @@
 import React from 'react';
 import { View, ScrollView, StyleSheet } from 'react-native';
 import { Calendar, Card, Text } from '@ui-kitten/components';
-import events from '../data/event_examples.json';
+import events from '../data/events_array'; // Import the events array
 
 // Calendar page
 function CalendarPage() {
   return (
     <ScrollView>
-      <Calendar1 />
+      <Calendar1 eventsData={events} />
     </ScrollView>
   );
 }
@@ -26,25 +26,24 @@ export const Calendar1 = () => {
       />
       <Card1 style={{ width: '100%' }}
         selectedDate={date.toLocaleDateString()}
+        events={events} // Pass events prop to Card1
       />
     </>
   );
 };
 
+
 // Card component
-export const Card1 = ({ selectedDate }) => {
+export const Card1 = ({ selectedDate, events: eventsData }) => {
   
-  // List of descriptions for each date
-  const [info, setInfo] = React.useState(events);
+  const [events, setEvents] = React.useState([]);
 
-  // Add info to selected date (currently not in use/might not be needed)
-  const addInfo = (name, date, text) => {
-    setInfo([...info, { name, date, text }]);
-  };
+  React.useEffect(() => {
+    setEvents(eventsData);
+  }, [eventsData]);
 
-  // Get info from selected date
-  const selectedEvent = info.find(item => item.date === selectedDate)?.name;
-  const selectedText = info.find(item => item.date === selectedDate)?.text;
+  const selectedEvent = events.find(item => item.date === selectedDate)?.name;
+  const selectedText = events.find(item => item.date === selectedDate)?.text;
   
   /* (Probably not needed)
   // Get day of the week
@@ -58,7 +57,7 @@ export const Card1 = ({ selectedDate }) => {
   */
 
   return (
-    <Card >
+    <Card>
       <Text>
         {selectedEvent || 'No events planned for this day.'}
         {'\n\n'}
