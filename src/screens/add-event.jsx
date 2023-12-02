@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, StyleSheet, Pressable } from 'react-native';
 import DatePicker from 'react-native-date-picker';
-import CalendarPage from './calendar';
+
+// DO WE NEED THESE?
 //import { useNavigation } from '@react-navigation/native';
 //import AsyncStorage from '@react-native-async-storage/async-storage';
 //import events from '../data/events_array'; // Import the events array
@@ -12,6 +13,8 @@ export default function AddEvent({ navigation }) {
   const [description, setDescription] = useState('');
   const [date, setDate] = useState(new Date());
   const [open, setOpen] = useState(false);
+
+  // DO WE NEED THIS?
   //const [eventsArr, setEventsArr] = useState(events);
   
   const onInputChange = (newTitle, newDescription) => {
@@ -23,22 +26,16 @@ export default function AddEvent({ navigation }) {
   const saveEvent = async () => {
     onInputChange(title, description);
 
-    // const newEvent = {
-    //   name: title,
-    //   date: date.toLocaleDateString(),
-    //   text: description,
-    // };
-
-    // test event
     const newEvent = {
-      name: "new event test",
-      date: "12/15/2023",
-      text: "test description",
+      name: title,
+      date: date.toLocaleDateString(),
+      text: description,
     };
 
-    //CalendarPage({ newEvent });
+    // Navigate to Calendar page and pass newEvent
     navigation.navigate('Calendar', { newEvent });
 
+    // DO WE NEED THIS?
     // try {
     //   const updatedEvents = [...eventsArr, newEvent];
     //   setEventsArr(updatedEvents); // Update eventsArr state with the new event

@@ -4,16 +4,20 @@ import { Calendar, Card, Text } from '@ui-kitten/components';
 import eventExamples from '../data/event_examples.json'; // Import the events array
 
 // Calendar page
-const CalendarPage = () => {
-  //const { newEvent } = useContext(EventContext);
+const CalendarPage = ({ route }) => {
 
-  const [events, setEvents] = React.useState(eventExamples);
+  // Set newEvent to the new event passed from AddEvent
+  const { newEvent } = route?.params || {};
 
-  // React.useEffect(() => {
-  //   if (newEvent) {
-  //     setEvents(prevEvents => [...prevEvents, newEvent]);
-  //   }
-  // }, [newEvent]);
+  // Popluate events array with eventExamples
+  const [events, setEvents] = React.useState(eventExamples); 
+
+  // Add new event to events array
+  React.useEffect(() => {
+    if (newEvent) {
+      setEvents(prevEvents => [...prevEvents, newEvent]);
+    }
+  }, [newEvent]);
 
   return (
     <ScrollView>
@@ -44,16 +48,6 @@ export const Calendar1 = ({ events }) => {
 
 // Card component
 export const Card1 = ({ selectedDate, events }) => {
-  
-  // Popluate events array with eventExamples
-  //const [events, setEvents] = React.useState(eventExamples);
-
-  // Add new event to events array
-  // React.useEffect(() => {
-  //   if (newEvent) {
-  //     setEvents(prevEvents => [...prevEvents, newEvent]);
-  //   }
-  // }, [newEvent]);
 
   const selectedEvent = events.find(item => item.date === selectedDate)?.name;
   const selectedText = events.find(item => item.date === selectedDate)?.text;
