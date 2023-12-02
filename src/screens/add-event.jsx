@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, StyleSheet, Pressable } from 'react-native';
 import DatePicker from 'react-native-date-picker';
+import CalendarPage from './calendar';
 //import { useNavigation } from '@react-navigation/native';
 //import AsyncStorage from '@react-native-async-storage/async-storage';
 //import events from '../data/events_array'; // Import the events array
@@ -18,6 +19,7 @@ export default function AddEvent({ navigation }) {
     console.log('Description:', newDescription);
   };
 
+
   const saveEvent = async () => {
     onInputChange(title, description);
 
@@ -34,6 +36,7 @@ export default function AddEvent({ navigation }) {
       text: "test description",
     };
 
+    //CalendarPage({ newEvent });
     navigation.navigate('Calendar', { newEvent });
 
     // try {

@@ -4,18 +4,16 @@ import { Calendar, Card, Text } from '@ui-kitten/components';
 import eventExamples from '../data/event_examples.json'; // Import the events array
 
 // Calendar page
-function CalendarPage({ route }) {
-
-  // currently broken/causing error
-  const { newEvent } = route.params;
+const CalendarPage = () => {
+  //const { newEvent } = useContext(EventContext);
 
   const [events, setEvents] = React.useState(eventExamples);
 
-  React.useEffect(() => {
-    if (newEvent) {
-      setEvents(prevEvents => [...prevEvents, newEvent]);
-    }
-  }, [newEvent]);
+  // React.useEffect(() => {
+  //   if (newEvent) {
+  //     setEvents(prevEvents => [...prevEvents, newEvent]);
+  //   }
+  // }, [newEvent]);
 
   return (
     <ScrollView>
