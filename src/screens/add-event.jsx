@@ -21,10 +21,17 @@ export default function AddEvent({ navigation }) {
   const saveEvent = async () => {
     onInputChange(title, description);
 
+    // const newEvent = {
+    //   name: title,
+    //   date: date.toLocaleDateString(),
+    //   text: description,
+    // };
+
+    // test event
     const newEvent = {
-      name: title,
-      date: date.toLocaleDateString(),
-      text: description,
+      name: "new event test",
+      date: "12/15/2023",
+      text: "test description",
     };
 
     navigation.navigate('Calendar', { newEvent });

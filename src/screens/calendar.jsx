@@ -2,22 +2,31 @@ import React from 'react';
 import { View, ScrollView, StyleSheet } from 'react-native';
 import { Calendar, Card, Text } from '@ui-kitten/components';
 import eventExamples from '../data/event_examples.json'; // Import the events array
-import { useRoute } from '@react-navigation/native';
 
 // Calendar page
-function CalendarPage() {
-  const route = useRoute();
-  const { newEvent } = route.params || {};
+function CalendarPage({ route }) {
+
+  // currently broken/causing error
+  const { newEvent } = route.params;
+
+  const [events, setEvents] = React.useState(eventExamples);
+
+  React.useEffect(() => {
+    if (newEvent) {
+      setEvents(prevEvents => [...prevEvents, newEvent]);
+    }
+  }, [newEvent]);
+
   return (
     <ScrollView>
-      <Calendar1 />
+      <Calendar1 events={events}/>
     </ScrollView>
   );
 }
 export default CalendarPage;
 
 // Calendar component
-export const Calendar1 = () => {
+export const Calendar1 = ({ events }) => {
 
   const [date, setDate] = React.useState(new Date());
 
@@ -29,16 +38,24 @@ export const Calendar1 = () => {
       />
       <Card1 style={{ width: '100%' }}
         selectedDate={date.toLocaleDateString()}
+        events={events}
       />
     </>
   );
 };
 
 // Card component
-export const Card1 = ({ selectedDate }) => {
+export const Card1 = ({ selectedDate, events }) => {
   
   // Popluate events array with eventExamples
-  const [events, setEvents] = React.useState(eventExamples);
+  //const [events, setEvents] = React.useState(eventExamples);
+
+  // Add new event to events array
+  // React.useEffect(() => {
+  //   if (newEvent) {
+  //     setEvents(prevEvents => [...prevEvents, newEvent]);
+  //   }
+  // }, [newEvent]);
 
   const selectedEvent = events.find(item => item.date === selectedDate)?.name;
   const selectedText = events.find(item => item.date === selectedDate)?.text;
